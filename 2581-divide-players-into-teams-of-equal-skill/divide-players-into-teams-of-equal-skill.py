@@ -1,28 +1,20 @@
 class Solution:
     def dividePlayers(self, skill: List[int]) -> int:
         skill.sort()
-        n=len(skill)//2
-        i=0
-        j=len(skill)-1
-        c=set()
-        for k in range(n):
-            b=skill[i]+skill[j]
-            c.add(b)
-            i+=1
-            j-=1
-        if len(c)==1:
-            i=0
-            j=len(skill)-1
-            sum=0
-            for r in range(n):
-                sum+=skill[i]*skill[j]
-                i+=1
-                j-=1
+        left = 0
+        right = len(skill) -1
+        container = set()
+        mul_container = list()
+        cnt = 0
+        while left < right:
+            container.add(skill[left] + skill[right])
+            mul_container.append(skill[left] * skill[right])
+            left += 1
+            right -= 1
+        
+        if len(container) == 1:
+           return sum(mul_container)
         else:
             return -1
-        return sum
-
-
-            
-
         
+            
