@@ -1,22 +1,24 @@
 class Solution:
     def moveZeroes(self, nums: List[int]) -> None:
-        i=0
-        j=1
-        for k in range(len(nums)-1):
-            if nums[i]==0:
-                if nums[j]!=0:
-                    temp=nums[i]
-                    nums[i]=nums[j]
-                    nums[j]=temp
-                    i+=1
-                    j+=1
-                else:
-                    j+=1
-            else:
-                i+=1
-                j+=1
-        return nums
         """
         Do not return anything, modify nums in-place instead.
         """
-        
+        right  = 1
+        left = 0
+
+        while right < len(nums) and left < len(nums):
+            if nums[left] == 0:
+                if nums[right] != 0:
+                    nums[left] , nums[right] = nums[right] , nums[left]
+                    left += 1
+                    right += 1
+                else:
+                    right += 1
+            else:
+                left += 1
+                right += 1
+            
+
+            
+
+         
